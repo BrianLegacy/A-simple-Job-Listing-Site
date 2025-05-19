@@ -1,0 +1,7 @@
+com/youthhub/bean/UserBean.class
+com/youthhub/bean/JobBean.class
+com/youthhub/model/Job.class
+com/youthhub/dao/JobDAO.class
+com/youthhub/dao/UserDAO.class
+com/youthhub/model/User.class
+com/youthhub/model/JobOpportunity.class

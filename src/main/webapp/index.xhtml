@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title>Youth Job &amp; Skills Hub</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 800px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-card {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #fafafa;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #2e6da4;
+        }
+
+        .submit-btn {
+            margin-top: 10px;
+        }
+    </style>
+</h:head>
+
+<h:body>
+
+    <div class="container">
+        <h1>Post a Job Opportunity</h1>
+
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="10" style="width:100%;">
+                <h:outputLabel for="title" value="Job Title:" />
+                <p:inputText id="title" value="#{jobBean.job.title}" required="true" label="Job Title" />
+
+                <h:outputLabel for="desc" value="Description:" />
+                <p:inputTextarea id="desc" value="#{jobBean.job.description}" required="true" label="Description" rows="4" autoResize="true" />
+            </h:panelGrid>
+
+            <div class="submit-btn">
+                <p:commandButton value="Post Job" action="#{jobBean.submitJob}" ajax="false" style="width:100%;" />
+            </div>
+        </h:form>
+
+        <hr style="margin: 30px 0;"/>
+
+        <h2>Available Job Opportunities</h2>
+
+        <ui:repeat value="#{jobBean.allJobs}" var="job">
+            <div class="job-card">
+                <h3>#{job.title}</h3>
+                <p>#{job.description}</p>
+            </div>
+        </ui:repeat>
+    </div>
+
+</h:body>
+</html>

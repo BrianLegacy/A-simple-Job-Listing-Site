@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>User Registration - YouthHub</title>
+    <style>
+        .card {
+            width: 450px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: sans-serif;
+        }
+    </style>
+</h:head>
+
+<h:body>
+
+    <h:form>
+        <h:panelGroup layout="block" styleClass="card">
+            <h2 style="text-align:center;">Create Account</h2>
+
+            <p:messages id="msgs" />
+
+            <h:panelGrid columns="1" cellpadding="10" style="width:100%;" columnClasses="label,value">
+                <p:inputText value="#{userBean.user.fullName}" label="Full Name" required="true" placeholder="Full Name" />
+                <p:inputText value="#{userBean.user.email}" label="Email" required="true" placeholder="Email" />
+                <p:password value="#{userBean.user.password}" label="Password" required="true" placeholder="Password" />
+            </h:panelGrid>
+
+            <div style="margin-top: 10px;">
+                <p:commandButton value="Register" action="#{userBean.register}" ajax="false" style="width:100%;" />
+            </div>
+
+            <div style="margin-top:10px; text-align:center;">
+                <h:outputText value="Already have an account? " />
+                <h:commandLink value="Login here" action="login.xhtml?faces-redirect=true" immediate="true" />
+            </div>
+        </h:panelGroup>
+    </h:form>
+
+</h:body>
+</html>
